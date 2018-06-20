@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use \App\Item;
+
 class ItemsController extends Controller
 {
     public function create()
@@ -22,7 +24,7 @@ class ItemsController extends Controller
 
             // Creating "Item" instance to make it easy to handle.（not saving）
             foreach ($rws_response->getData()['Items'] as $rws_item) {
-                $item = new Item();
+                $item = new \App\Item();
                 $item->code = $rws_item['Item']['itemCode'];
                 $item->name = $rws_item['Item']['itemName'];
                 $item->url = $rws_item['Item']['itemUrl'];
